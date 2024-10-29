@@ -34,7 +34,6 @@ public class RestAssuredClient extends BaseTest {
         System.out.println("RequestSpecification: " + endPoint);
         Response response = requestSpecification.body(body)
                 .when()
-                .log().all()
                 .post(endPoint);
 
         printRequestLogInReport(requestSpecification);
@@ -56,7 +55,6 @@ public class RestAssuredClient extends BaseTest {
 
         Response response = requestSpecification
                 .when()
-                .log().all()
                 .get(endPoint);
 
         printRequestLogInReport(requestSpecification);
