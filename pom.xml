@@ -34,7 +34,12 @@
       <version>5.9.2</version>
     </dependency>
   </dependencies>
-
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/Tap-Payments/QA-Common-Utils</url>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
