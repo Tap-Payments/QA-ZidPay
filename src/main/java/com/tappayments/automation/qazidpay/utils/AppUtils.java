@@ -27,8 +27,10 @@ import static org.testng.Assert.assertTrue;
 
 public class AppUtils {
 
+    @SneakyThrows
     public static Map<String, String> zidPayTokenRequestBody(){
 
+        Thread.sleep(5000);
         Map<String, String> zidPayTokenRequestBody = new HashMap<>();
         zidPayTokenRequestBody.put("publishableApiKey", AppConstants.PUBLISHABLE_API_KEY_VALUE);
         zidPayTokenRequestBody.put("providerMerchantId", AppConstants.PROVIDER_MERCHANT_ID_VALUE);
@@ -36,6 +38,7 @@ public class AppUtils {
         return zidPayTokenRequestBody;
     }
 
+    @SneakyThrows
     public static String getZidPayTokenValue(){
 
         Response response = ZidPaySystemRequest.postZidPayTokenResponse();
@@ -43,6 +46,7 @@ public class AppUtils {
         if (tokenId != null && !tokenId.isEmpty())
             return tokenId;
 
+        Thread.sleep(5000);
         return getZidPayTokenValue();
     }
 
@@ -67,8 +71,10 @@ public class AppUtils {
         assertTrue(validationResponse.get("token_id").startsWith("tok_"), "The value does not start with 'tok_'");
     }
 
+    @SneakyThrows
     public static PaymentRequest zidPayPaymentRequestInstance() {
 
+        Thread.sleep(5000);
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AppConstants.PAYMENT_REFERENCE_ID, UUID.randomUUID().toString());
         metadata.put(AppConstants.CUSTOMER_NAME, "Test Customer");
@@ -184,8 +190,10 @@ public class AppUtils {
         }
     }
 
+    @SneakyThrows
     public static PaymentRefund zidPayPaymentRefundInstance(){
 
+        Thread.sleep(5000);
         return PaymentRefund.builder()
                 .amount(100)
                 .paymentId("chg_123456789")
@@ -196,7 +204,6 @@ public class AppUtils {
 
         AppUtils.openAuthUrlFrictionlessFlow(transactionAuthUrl);
         Response response = ZidPaySystemRequest.getZidPayPaymentStatus(zidPayPaymentId);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentStatus(response, paymentRequest, AppConstants.PAID);
     }
 
@@ -205,10 +212,8 @@ public class AppUtils {
 
         String requestBody = CommonAutomationUtils.stringToJson(paymentRefund);
         Response response = ZidPaySystemRequest.postZidPayPaymentRefund(requestBody);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentRefund(response);
         response = ZidPaySystemRequest.getZidPayPaymentStatus(zidPayPaymentId);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentStatus(response, paymentRequest, AppConstants.PAID, paymentRefund.getAmount());
     }
 
