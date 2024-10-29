@@ -290,7 +290,6 @@ public class RefundZidPayPayment extends BaseTest {
         totalAmount += paymentRefund.getAmount();
         String requestBody = CommonAutomationUtils.stringToJson(paymentRefund);
         Response response = ZidPaySystemRequest.postZidPayPaymentRefund(requestBody);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentRefund(response);
 
         paymentRefund.setAmount(900);
@@ -298,12 +297,10 @@ public class RefundZidPayPayment extends BaseTest {
         totalAmount += paymentRefund.getAmount();
         requestBody = CommonAutomationUtils.stringToJson(paymentRefund);
         response = ZidPaySystemRequest.postZidPayPaymentRefund(requestBody);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentRefund(response);
 
         Thread.sleep(61000);
         response = ZidPaySystemRequest.getZidPayPaymentStatus(zidPayPaymentId);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPaymentStatus(response, paymentRequest, AppConstants.PAID, totalAmount);
     }
 

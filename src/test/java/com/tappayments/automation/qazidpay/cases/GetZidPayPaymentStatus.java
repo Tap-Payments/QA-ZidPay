@@ -29,7 +29,6 @@ public class GetZidPayPaymentStatus extends BaseTest {
         PaymentRequest paymentRequest = AppUtils.zidPayPaymentRequestInstance();
         paymentRequest.getSource().setToken(AppUtils.getZidPayTokenValue());
         Response zidPayPaymentResponse = AppUtils.getZidPayPaymentResponse(paymentRequest);
-        System.out.println(zidPayPaymentResponse.prettyPrint());
         String zidPayPaymentId = zidPayPaymentResponse.jsonPath().getString(AppConstants.ID);
         Response response = ZidPaySystemRequest.getZidPayPaymentStatus(zidPayPaymentId);
         AppUtils.validateZidPayPaymentStatus(response, paymentRequest);

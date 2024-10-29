@@ -799,7 +799,6 @@ public class CreateZidPayPayment extends BaseTest {
         String requestBody = CommonAutomationUtils.stringToJson(paymentRequest);
         String updatedRequestBody = CommonAutomationUtils.modifyJson(requestBody, AppConstants.DELETE, AppConstants.SOURCE + "." + AppConstants.TOKEN, null);
         Response response = ZidPaySystemRequest.postZidPayPaymentResponse(updatedRequestBody);
-        System.out.println(response.prettyPrint());
         CommonAutomationUtils.verifyStatusCode(response, HttpStatus.SC_BAD_REQUEST);
         CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY + "." + AppConstants.ERROR, AppConstants.INTERNAL_SERVER_ERROR));
     }
@@ -2797,7 +2796,6 @@ public class CreateZidPayPayment extends BaseTest {
         paymentRequest.getSource().setToken(AppUtils.getZidPayTokenValue());
         String requestBody = CommonAutomationUtils.stringToJson(paymentRequest);
         Response response = ZidPaySystemRequest.postZidPayPaymentResponse(requestBody);
-        System.out.println(response.prettyPrint());
         AppUtils.validateZidPayPayment(response, paymentRequest);
     }
     

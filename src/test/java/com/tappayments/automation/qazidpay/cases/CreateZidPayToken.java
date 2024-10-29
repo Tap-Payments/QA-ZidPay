@@ -42,7 +42,6 @@ public class CreateZidPayToken extends BaseTest {
         zidPayTokenRequestBody.put(AppConstants.PUBLISHABLE_API_KEY, AppConstants.PUBLISHABLE_API_KEY_VALUE);
         String requestBody = CommonAutomationUtils.stringToJson(zidPayTokenRequestBody);
         Response response = ZidPaySystemRequest.postZidPayTokenResponse(requestBody);
-        System.out.println(response.prettyPrint());
         String tokenId = response.jsonPath().getString(AppConstants.TOKEN);
         AppUtils.validateZidPayTokenValue(response, Map.of(AppConstants.TOKEN_ID, tokenId, AppConstants.BRAND, AppConstants.MASTER, AppConstants.SCHEME, AppConstants.MASTER));
     }
@@ -127,7 +126,6 @@ public class CreateZidPayToken extends BaseTest {
         zidPayTokenRequestBody.remove(AppConstants.PUBLISHABLE_API_KEY);
         String requestBody = CommonAutomationUtils.stringToJson(zidPayTokenRequestBody);
         Response response = ZidPaySystemRequest.postZidPayTokenResponse(requestBody);
-        System.out.println(response.prettyPrint());
         CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_PUBLISHABLE_API_KEY_ERROR_MSG));
         CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
     }
@@ -191,7 +189,6 @@ public class CreateZidPayToken extends BaseTest {
         zidPayTokenRequestBody.put(AppConstants.PROVIDER_MERCHANT_ID, null);
         String requestBody = CommonAutomationUtils.stringToJson(zidPayTokenRequestBody);
         Response response = ZidPaySystemRequest.postZidPayTokenResponse(requestBody);
-        System.out.println(response.prettyPrint());
         CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_PROVIDER_MERCHANT_ID_ERROR_MSG));
         CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
     }
@@ -337,7 +334,6 @@ public class CreateZidPayToken extends BaseTest {
         zidPayTokenRequestBody.put(AppConstants.NUMBER, null);
         String requestBody = CommonAutomationUtils.stringToJson(zidPayTokenRequestBody);
         Response response = ZidPaySystemRequest.postZidPayTokenResponse(requestBody);
-        System.out.println(response.prettyPrint());
         CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_CARD_NUMBER));
         CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
     }

@@ -31,7 +31,6 @@ public class RestAssuredClient extends BaseTest {
     public static Response postRequest(String body, String endPoint, Map<String, String> headers) {
 
         RequestSpecification requestSpecification = requestSpecification(headers);
-        System.out.println("RequestSpecification: " + endPoint);
         Response response = requestSpecification.body(body)
                 .when()
                 .post(endPoint);
