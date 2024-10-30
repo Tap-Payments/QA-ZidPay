@@ -33,6 +33,7 @@ public class RestAssuredClient extends BaseTest {
         RequestSpecification requestSpecification = requestSpecification(headers);
         Response response = requestSpecification.body(body)
                 .when()
+                .log().all()
                 .post(endPoint);
 
         printRequestLogInReport(requestSpecification);
@@ -54,6 +55,7 @@ public class RestAssuredClient extends BaseTest {
 
         Response response = requestSpecification
                 .when()
+                .log().all()
                 .get(endPoint);
 
         printRequestLogInReport(requestSpecification);

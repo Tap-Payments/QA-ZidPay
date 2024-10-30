@@ -46,7 +46,7 @@ public class AppUtils {
         if (tokenId != null && !tokenId.isEmpty())
             return tokenId;
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         return getZidPayTokenValue();
     }
 
@@ -74,7 +74,7 @@ public class AppUtils {
     @SneakyThrows
     public static PaymentRequest zidPayPaymentRequestInstance() {
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AppConstants.PAYMENT_REFERENCE_ID, UUID.randomUUID().toString());
         metadata.put(AppConstants.CUSTOMER_NAME, "Test Customer");
