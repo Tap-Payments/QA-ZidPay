@@ -30,7 +30,7 @@ public class AppUtils {
     @SneakyThrows
     public static Map<String, String> zidPayTokenRequestBody(){
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         Map<String, String> zidPayTokenRequestBody = new HashMap<>();
         zidPayTokenRequestBody.put("publishableApiKey", AppConstants.PUBLISHABLE_API_KEY_VALUE);
         zidPayTokenRequestBody.put("providerMerchantId", AppConstants.PROVIDER_MERCHANT_ID_VALUE);
