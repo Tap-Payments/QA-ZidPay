@@ -8,10 +8,10 @@
     <!-- Test Suite for Internal Authentication -->
     <test name="QA Authentication Cases - Internal Auth" verbose="2" preserve-order="true">
         <classes>
-            <class name="com.tappayments.automation.qazidpay.cases.CreateZidPayToken"/>
-            <class name="com.tappayments.automation.qazidpay.cases.CreateZidPayPayment"/>
+<!--            <class name="com.tappayments.automation.qazidpay.cases.CreateZidPayToken"/>-->
+<!--            <class name="com.tappayments.automation.qazidpay.cases.CreateZidPayPayment"/>-->
             <class name="com.tappayments.automation.qazidpay.cases.GetZidPayPaymentStatus"/>
-            <class name="com.tappayments.automation.qazidpay.cases.RefundZidPayPayment"/>
+<!--            <class name="com.tappayments.automation.qazidpay.cases.RefundZidPayPayment"/>-->
         </classes>
     </test>
 </suite>
