@@ -14,18 +14,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class CreateZidPayToken extends BaseTest {
 
-
-//    @Test
-//    public void test(){
-//
-//        System.out.println("---------------------------------------------------------------------");
-//        System.out.println(AppUtils.encryptCardDetails(AppConstants.REQUEST_BODY_MASTER_CARD_BODY));
-//        System.out.println(AppUtils.encryptCardDetails(AppConstants.REQUEST_BODY_VISA_CARD_BODY));
-//        System.out.println(AppUtils.encryptCardDetails(AppConstants.REQUEST_BODY_MADA_CARD_BODY));
-//        System.out.println(AppUtils.encryptCardDetails(AppConstants.REQUEST_BODY_FRICTIONLESS_CARD_BODY));
-//        System.out.println("---------------------------------------------------------------------");
-//    }
-//
     @Test(
             groups = {
                     "MC:Create ZidPay Token",

@@ -758,7 +758,8 @@ public class CreateZidPayPayment extends BaseTest {
         String requestBody = CommonAutomationUtils.stringToJson(paymentRequest);
         Response response = ZidPaySystemRequest.postZidPayPaymentResponse(requestBody);
         CommonAutomationUtils.verifyStatusCode(response, HttpStatus.SC_BAD_REQUEST);
-        CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY + "." + AppConstants.ERROR, AppConstants.INTERNAL_SERVER_ERROR));
+        CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
+        CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_TOKEN));
     }
 
     // Add a test case for empty source token
@@ -778,7 +779,7 @@ public class CreateZidPayPayment extends BaseTest {
         paymentRequest.getSource().setToken("");
         String requestBody = CommonAutomationUtils.stringToJson(paymentRequest);
         Response response = ZidPaySystemRequest.postZidPayPaymentResponse(requestBody);
-        CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.PROCESSING_ERROR_VALUE));
+        CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_TOKEN));
         CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
     }
     
@@ -799,8 +800,8 @@ public class CreateZidPayPayment extends BaseTest {
         String requestBody = CommonAutomationUtils.stringToJson(paymentRequest);
         String updatedRequestBody = CommonAutomationUtils.modifyJson(requestBody, AppConstants.DELETE, AppConstants.SOURCE + "." + AppConstants.TOKEN, null);
         Response response = ZidPaySystemRequest.postZidPayPaymentResponse(updatedRequestBody);
-        CommonAutomationUtils.verifyStatusCode(response, HttpStatus.SC_BAD_REQUEST);
-        CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY + "." + AppConstants.ERROR, AppConstants.INTERNAL_SERVER_ERROR));
+        CommonAutomationUtils.verifyCommonResponseFailedValidation(response, HttpStatus.SC_BAD_REQUEST, Map.of(AppConstants.MESSAGE, AppConstants.INVALID_TOKEN));
+        CommonAutomationUtils.verifyExactMatch(response, Map.of(AppConstants.ERRORS_ZERO_KEY, AppConstants.ERRORS_ZERO_VALUE));
     }
 
     // Add a test case for valid payment reference id

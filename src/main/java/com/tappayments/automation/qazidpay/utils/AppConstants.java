@@ -34,6 +34,7 @@ public class AppConstants {
     public static final String ERROR_METHOD_NOT_ALLOWED_VALUE = "METHOD_NOT_ALLOWED";
     public static final String NUMBER = "number";
     public static final String INVALID_TOKEN_NUMBER = "invalidTokenNumber";
+    public static final String INVALID_TOKEN = "Invalid token";
     public static final String PROCESSING_ERROR_VALUE = "Processing Error";
     public static final String INVALID_CARD_NUMBER = "Invalid card number";
     public static final String INVALID_AMOUNT_ERROR_MSG = "Invalid amount";
